@@ -2,29 +2,27 @@ import React, { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const [count, setCount] = useState(1);
+  const data = [
+    { id: 1, name: "Tee01" },
+    { id: 2, name: "Tee02" },
+    { id: 3, name: "Tee03" },
+    { id: 4, name: "Tee04" },
+    { id: 5, name: "Tee05" },
+  ];
+
+  const [student, setStudent] = useState(data);
 
   return (
     <div className="container">
-      <div className="d-flex justify-content-evenly">
-        <button
-          onClick={() => {
-            setCount(count - 1);
-            console.log(count);
-          }}
-        >
-          -
-        </button>
-        <h1>{count}</h1>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-            console.log(count);
-          }}
-        >
-          +
-        </button>
-      </div>
+      <h1>Total : {student.length}</h1>
+      {student.map((item) => (
+        <p key={item.id}>
+          {item.id} {item.name}{" "}
+          <button type="button" class="btn btn-success">
+            Delete
+          </button>
+        </p>
+      ))}
     </div>
   );
 }
