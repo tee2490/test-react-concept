@@ -11,18 +11,40 @@ export default function App() {
   ];
 
   const [student, setStudent] = useState(data);
+  const [show, setShow] = useState(true);
+
+  function delData(id) {
+    if (confirm("Confirm delete") == false) return
+    
+    var temp = student.filter((item) => item.id != id);
+    setStudent(temp);
+  }
 
   return (
     <div className="container">
-      <h1>Total : {student.length}</h1>
-      {student.map((item) => (
-        <p key={item.id}>
-          {item.id} {item.name}{" "}
-          <button type="button" class="btn btn-success">
-            Delete
-          </button>
-        </p>
-      ))}
+      <div className="d-flex justify-content-evenly">
+        <h1>Total : {student.length}</h1>
+        <button
+          onClick={() => setShow(!show)}
+          type="button"
+          className="btn btn-primary"
+        >
+          {show ? "Hidden" : "Show"}
+        </button>
+      </div>
+      {show &&
+        student.map((item) => (
+          <p key={item.id}>
+            {item.id} {item.name}{" "}
+            <button
+              onClick={() => delData(item.id)}
+              type="button"
+              class="btn btn-success"
+            >
+              Delete
+            </button>
+          </p>
+        ))}
     </div>
   );
 }
