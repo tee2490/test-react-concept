@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./Studentlist.css";
 import Item from "./Item";
+import AddForm from "./AddForm";
 
 export default function Studentlist() {
   const [student, setStudent] = useState([
-    { id: 1, name: "Student1" },
-    { id: 2, name: "Student2" },
-    { id: 3, name: "Student3" },
+    { id: 1, name: "Student1", gender:"male" },
+    { id: 2, name: "Student2", gender:"female" },
+    { id: 3, name: "Student3", gender:"male" },
   ]);
 
   const [show, setShow] = useState(true);
@@ -17,6 +18,7 @@ export default function Studentlist() {
 
   return (
     <div>
+      <AddForm student={student} setStudent={setStudent}/>
       <ul>
         <div className="header">
           <h3>All students : {student.length} </h3>
@@ -26,8 +28,10 @@ export default function Studentlist() {
         </div>
         {show &&
           student.map((item) => (
-            <Item id={item.id} name={item.name} deleteStudent={deleteStudent} />
-          ))}
+            <div key={item.id}>
+              <Item item={item} deleteStudent={deleteStudent} />
+              </div>
+           ))}
       </ul>
     </div>
   );

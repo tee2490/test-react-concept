@@ -1,12 +1,13 @@
 import React from 'react'
 
 export default function Item(props) {
-    const {id,name,deleteStudent} = props
+    const {item,deleteStudent} = props
+    const {id,name,gender} = item
   return (
-    <div>
-         <li key={id}>
+   
+         <li>
               <p>
-                {id} {name}{" "}
+                {id} {name} {gender} {" "}
                 <button
                   className="delete"
                   onClick={() => deleteStudent(id)}
@@ -15,6 +16,6 @@ export default function Item(props) {
                 </button>
               </p>
             </li>
-    </div>
+   
   )
 }
