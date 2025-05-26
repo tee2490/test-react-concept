@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Studentlist.css";
+import Item from "./Item";
 
 export default function Studentlist() {
   const [student, setStudent] = useState([
@@ -25,17 +26,7 @@ export default function Studentlist() {
         </div>
         {show &&
           student.map((item) => (
-            <li key={item.id}>
-              <p>
-                {item.id} {item.name}{" "}
-                <button
-                  className="delete"
-                  onClick={() => deleteStudent(item.id)}
-                >
-                  Delete
-                </button>
-              </p>
-            </li>
+            <Item id={item.id} name={item.name} deleteStudent={deleteStudent} />
           ))}
       </ul>
     </div>

@@ -5,7 +5,7 @@ import StudentList from "./components/StudentList";
 export default function App() {
   return (
     <div className="container">
-      <Header />
+      <Header title = "Computer Science"/>
       <main>
         <StudentList />
       </main>
