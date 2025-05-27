@@ -1,24 +1,26 @@
-import React from "react";
-
-function Test({id,name,addData}) {
- // const {id,name,addData} = prop
-
-  return (
-    <div>
-      {id} {name}
-      <button onClick={addData}>Add data</button>
-    </div>
-  );
-}
+import React,{useEffect} from 'react'
+import { useState } from 'react'
 
 export default function App() {
-  const addData = () => {
-    alert("Add success fully");
-  };
+const [count, setCount] = useState(0)
+const [test, setTest] = useState(0)
 
+ useEffect(() => {
+   console.log("1.ถ้า state เปลี่ยนจะ render ใหม่เสมอ")
+  })
+
+   useEffect(() => {
+   console.log("2.ทำครั้งเดียวตอนเริ่มต้น")
+  },[])
+
+  useEffect(() => {
+   console.log("3.ทำเมื่อกำหนดเงื่อนไข")
+  },[count,test])
+  
   return (
     <div>
-      <Test id={1} name="Coffee" addData={addData} />
-    </div>
-  );
+      <button onClick={()=>setTest(999)}>click test</button>
+      {count} <button onClick={()=>setCount(count + 1)}>Add</button>
+      </div>
+  )
 }
